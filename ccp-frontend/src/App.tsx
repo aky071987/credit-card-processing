@@ -23,7 +23,7 @@ function App() {
     CcpService.getAll()
       .then((response: any) => {
         console.log(response.data);
-        setCardList(response.data);
+        setCardList(response.data['responseData']);
       })
       .catch((e: Error) => {
         console.log(e);
@@ -59,10 +59,10 @@ function App() {
       CcpService.create(creditCardModal)
       .then((response: any) => {
         console.log(response.data);
-        if(response.data['requestStatus'] == 'success'){
+        if(response.data['responseStatus'] == 'success'){
           setCreditCardModal({userName: '', cardNumber: '', cardLimit: 0});
-          setCardList([...cardList, {...creditCardModal, balance:1}]);
-        } else if(response.data['requestStatus'] == 'error') {
+          setCardList([...cardList, {...creditCardModal, balance: 1}]);
+        } else if(response.data['responseStatus'] == 'error') {
           setValidationErrors(response['validationErrors']);
         } else {
           alert("server error, please try again later! or check with support!");
