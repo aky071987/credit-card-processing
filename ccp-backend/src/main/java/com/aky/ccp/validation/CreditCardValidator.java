@@ -18,7 +18,7 @@ public class CreditCardValidator implements Validator<CreditCardModal>{
         }
 
         if(!(entity.getCardLimit() > 0)){
-            validationErrors.put("cardNumber", "Card Limit must be a valid number and greater than 0!");
+            validationErrors.put("cardLimit", "Card Limit must be a valid number and greater than 0!");
         }
         return validationErrors.isEmpty() ? null : validationErrors;
     }
@@ -30,9 +30,11 @@ public class CreditCardValidator implements Validator<CreditCardModal>{
     private boolean isValidLuhn10(String cardNumber) {
         cardNumber = cardNumber.replaceAll("[ -]", "");
         int sum = 0;
-        for (int i=0; i<cardNumber.length(); i++){
+        int len = cardNumber.length();
+        int rem = len % 2;
+        for (int i=0; i<len; i++){
             int digit = (int) cardNumber.charAt(i) - '0';
-            if (i % 2 == 0) {
+            if (i % 2 == rem) {
                 digit *= 2;
                 if (digit > 9)
                     digit -= 9;

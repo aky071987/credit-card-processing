@@ -3,7 +3,7 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   datasource:
-    jdbc-url: jdbc:h2:mem:testdb
+    jdbc-url: jdbc:h2:mem:ccpdb
     username: ccp
     password: ccp
     hikari:

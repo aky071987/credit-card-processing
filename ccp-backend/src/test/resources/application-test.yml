@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    jdbc-url: jdbc:h2:mem:testccpdb
+    username: testccp
+    password: testccp

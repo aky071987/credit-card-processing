@@ -10,6 +10,7 @@ import java.sql.SQLException;
 public class CreditCardListRowMapper implements RowMapper<CreditCardListModal> {
     public CreditCardListModal mapRow(ResultSet rs, int rowNum) throws SQLException {
         CreditCardListModal card= new CreditCardListModal();
+        card.setId(rs.getInt("id"));
         card.setUserName(rs.getString(COLUMN_NAMES.user_name.name()));
         card.setCardNumber(rs.getString(COLUMN_NAMES.card_number.name()));
         card.setCardLimit(rs.getInt(COLUMN_NAMES.card_limit.name()));

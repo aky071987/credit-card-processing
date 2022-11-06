@@ -5,9 +5,11 @@ export const checkCardNumber = (cardNumber: any, minLength = 16, maxLength = 19)
 
 export const checkLuhn10Number = (number: string) => {
     let sum = 0;
-    for (let i=0; i<number.length; i++){
+    const len = number.length;
+    const rem = len % 2;
+    for (let i=0; i<len; i++){
       let digit = Number(number.charAt(i));
-      if (i % 2 === 0) {
+      if (i % 2 == rem) {
         digit *= 2;
         if (digit > 9)
           digit -= 9;
